@@ -35,6 +35,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get user by id
+      responses:
+        '200':
+          description: Successfully retrieved user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
 
 components:
   schemas:
@@ -43,11 +59,26 @@ components:
       required:
         - id
         - person_id
+        - first_name
+        - last_name
       properties:
         id:
           type: string
         person_id:
           type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     GetUsersResponse:
       type: object
       properties:
@@ -59,6 +90,15 @@ components:
       type: object
       required:
         - person_id
+        - first_name
+        - last_name
       properties:
         person_id:
           type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
