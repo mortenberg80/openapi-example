@@ -20,6 +20,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUsersResponse'
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: foo
+          description: bar
     post:
       summary: Create a new user
       description: foo
