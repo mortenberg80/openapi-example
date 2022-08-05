@@ -97,7 +97,7 @@ paths:
                     updated_at: '2019-08-24T14:15:22Z'                    
             application/xml:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Userv2'
 components:
   schemas:
     User:
