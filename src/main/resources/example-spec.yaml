@@ -78,6 +78,20 @@ paths:
                     date_of_birth: '2019-08-24'
                     created_at: '2019-08-24T14:15:22Z'
                     updated_at: '2019-08-24T14:15:22Z'
+            application/v2+json:
+              schema:
+                $ref: '#/components/schemas/Userv2'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    person_id: string
+                    first_name: string
+                    last_name: string
+                    email: foo@bar.com
+                    date_of_birth: '2019-08-24'
+                    created_at: '2019-08-24T14:15:22Z'
+                    updated_at: '2019-08-24T14:15:22Z'                    
             application/xml:
               schema:
                 $ref: '#/components/schemas/User'
@@ -102,6 +116,34 @@ components:
         date_of_birth:
           type: string
           format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Userv2:
+      type: object
+      required:
+        - id
+        - person_id
+        - first_name
+        - last_name
+        - email
+      properties:
+        id:
+          type: string
+        person_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        email:
+          type: string
         created_at:
           type: string
           format: date-time
