@@ -42,6 +42,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PostUserRequest'
+          application/v2+json:
+            schema:
+              $ref: '#/components/schemas/PostUserRequestv2'
       responses:
         '201':
           description: User is successfully created
@@ -173,3 +176,22 @@ components:
         date_of_birth:
           type: string
           format: date
+    PostUserRequestv2:
+      type: object
+      required:
+        - person_id
+        - first_name
+        - last_name
+        - email
+      properties:
+        person_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        email:
+          type: string
