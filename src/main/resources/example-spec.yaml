@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Example API
-  description: Title
+  description: Example API used to explore the OpenAPI spec
   version: 1.0.0
   license:
     name: Apache 2.0
@@ -12,7 +12,7 @@ info:
     url: https://github.com/mortenberg80
 servers:
   - url: 'http://localhost:8080'
-    description: Test
+    description: Local development server
 paths:
   /users:
     get:
@@ -34,7 +34,7 @@ paths:
           description: bar
     post:
       summary: Create a new user
-      description: foo
+      description: Endpoint used to create a new user.
       operationId: createUser
       requestBody:
         required: true
