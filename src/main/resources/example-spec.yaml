@@ -17,9 +17,14 @@ servers:
     description: Production server
   - url: 'https://dev.tretoen.no'
     description: Development server
+tags:
+  - name: User
+    description: Endpoints handling users
 paths:
   /users:
     get:
+      tags:
+        - User
       summary: Returns a list of users.
       description: Optional extended description in CommonMark or HTML.
       operationId: getUsers
@@ -39,6 +44,8 @@ paths:
                 TwoPersons:
                   $ref: '#/components/examples/UserListTwoPersons'
     post:
+      tags:
+        - User
       summary: Create a new user
       description: Endpoint used to create a new user.
       operationId: createUser
@@ -67,6 +74,8 @@ paths:
         schema:
           type: string
     get:
+      tags:
+        - User
       summary: Get user by id
       description: Gets a user by its id. Use accept header to control which response types you want to receive.
       operationId: getUserById

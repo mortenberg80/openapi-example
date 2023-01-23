@@ -46,6 +46,7 @@
                                 <basePackage>no.tretoen.tech.example</basePackage>
                                 <configPackage>no.tretoen.tech.example</configPackage>
                                 <interfaceOnly>true</interfaceOnly>
+                                <useTags>true</useTags>
                             </configOptions>
                         </configuration>
                     </execution>
