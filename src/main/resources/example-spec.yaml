@@ -65,14 +65,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-  '/users/{id}':
+  '/users/{userId}':
     parameters:
-      - name: id
-        description: id of user
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: '#/components/parameters/UserIdPathParam'
     get:
       tags:
         - User
@@ -194,6 +189,13 @@ components:
         type: integer
         format: int64
         default: 0
+    UserIdPathParam:
+      name: userId
+      description: id of user
+      in: path
+      required: true
+      schema:
+        type: string
   examples:
     UserMrWhite:
       value:
