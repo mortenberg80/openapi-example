@@ -5,11 +5,11 @@ info:
   version: 1.0.0
   license:
     name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html 
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
   contact:
     name: Morten Slaatten Berg
     email: mortenberg80@gmail.com
-    url: https://github.com/mortenberg80
+    url: 'https://github.com/mortenberg80'
 servers:
   - url: 'http://localhost:8080'
     description: Local development server
@@ -70,7 +70,7 @@ paths:
   '/users/{id}':
     parameters:
       - name: id
-        description: "id of user"
+        description: id of user
         in: path
         required: true
         schema:
@@ -89,11 +89,9 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: string
-                    person_id: string
-                    first_name: string
-                    last_name: string
-                    date_of_birth: '2019-08-24'
+                    id: 6d864fc7-7c2d-46b1-ab53-fe4e8b6aeec5
+                    name: 'Mr. White'                  
+                    date_of_birth: '1950-10-10'
                     created_at: '2019-08-24T14:15:22Z'
                     updated_at: '2019-08-24T14:15:22Z'
             application/v2+json:
@@ -102,14 +100,12 @@ paths:
               examples:
                 example-1:
                   value:
-                    id: string
-                    person_id: string
-                    first_name: string
-                    last_name: string
-                    email: foo@bar.com
-                    date_of_birth: '2019-08-24'
+                    id: b83a7eca-11bc-44bd-b8a7-3701e8e08122
+                    name: 'Mr. Pink'
+                    email: mrpink@reservoirdogs.com
+                    date_of_birth: '1955-03-01'
                     created_at: '2019-08-24T14:15:22Z'
-                    updated_at: '2019-08-24T14:15:22Z'                    
+                    updated_at: '2019-08-24T14:15:22Z'
             application/xml:
               schema:
                 $ref: '#/components/schemas/Userv2'
@@ -117,19 +113,10 @@ components:
   schemas:
     User:
       type: object
-      required:
-        - id
-        - person_id
-        - first_name
-        - last_name
       properties:
         id:
           type: string
-        person_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
+        name:
           type: string
         date_of_birth:
           type: string
@@ -140,22 +127,19 @@ components:
         updated_at:
           type: string
           format: date-time
+      required:
+        - id
+        - name
     Userv2:
       type: object
       required:
         - id
-        - person_id
-        - first_name
-        - last_name
+        - name
         - email
       properties:
         id:
           type: string
-        person_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
+        name:
           type: string
         date_of_birth:
           type: string
@@ -169,24 +153,16 @@ components:
           type: string
           format: date-time
     GetUsersResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+      description: ''
     PostUserRequest:
       type: object
       required:
-        - person_id
-        - first_name
-        - last_name
+        - name
       properties:
-        person_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
+        name:
           type: string
         date_of_birth:
           type: string
@@ -194,16 +170,10 @@ components:
     PostUserRequestv2:
       type: object
       required:
-        - person_id
-        - first_name
-        - last_name
+        - name
         - email
       properties:
-        person_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
+        name:
           type: string
         date_of_birth:
           type: string
