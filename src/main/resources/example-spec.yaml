@@ -167,15 +167,6 @@ components:
         email:
           type: string
   parameters:
-    OffsetQueryParam:
-      name: offset
-      description: 'Offset of the query: Where should the query start. Used in conjunction with limit'
-      in: query
-      required: false
-      schema:
-        type: integer
-        format: int64
-        default: 50
     LimitQueryParam:
       name: limit
       description: 'Limit the query: How many items should be returned'
@@ -185,6 +176,15 @@ components:
         type: integer
         format: int32
         default: 50
+    OffsetQueryParam:
+      name: offset
+      description: 'Offset of the query: Where should the query start. Used in conjunction with limit'
+      in: query
+      required: false
+      schema:
+        type: integer
+        format: int64
+        default: 0
   examples:
     UserMrWhite:
       value:
