@@ -17,6 +17,7 @@
     <properties>
         <feign-core.version>11.7</feign-core.version>
         <feign-form.version>3.8.0</feign-form.version>
+        <findbugs-jsr305.version>3.0.2</findbugs-jsr305.version>
     </properties>
 
     <build>
@@ -57,29 +58,40 @@
                             <modelPackage>no.tretoen.tech.example.client.api.model</modelPackage>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
+                                <source>${project.build.directory}/generated-sources/openapi/src/main/java</source>
                             </configOptions>
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.swagger.parser.v3</groupId>
+                        <artifactId>swagger-parser</artifactId>
+                        <version>${swagger-v3-parser.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.swagger.core.v3</groupId>
+                        <artifactId>swagger-core</artifactId>
+                        <version>${swagger-v3.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.swagger.core.v3</groupId>
+                        <artifactId>swagger-annotations</artifactId>
+                        <version>${swagger-v3.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
     <dependencies>
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>${swagger-v3.version}</version>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${findbugs-jsr305.version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>${swagger-v3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.parser.v3</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>${swagger-v3-parser.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>

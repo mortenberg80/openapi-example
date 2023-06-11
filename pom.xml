@@ -11,33 +11,45 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>example-api-spring-boot</module>
         <module>example-api-kotlin-server</module>
+        <module>example-api-kotlin-spring</module>
+        <module>example-api-spring-boot</module>
         <module>example-client-feign</module>
-        <module>example-client-okhttp</module>
+        <!--        <module>example-client-okhttp</module>-->
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <swagger-v3.version>2.1.12</swagger-v3.version>
-        <swagger-v3-parser.version>2.0.30</swagger-v3-parser.version>
+        <java.version>11</java.version>
+        <swagger-v3.version>2.2.8</swagger-v3.version>
+        <swagger-v3-parser.version>2.1.12</swagger-v3-parser.version>
 
-        <jackson-version>2.13.0</jackson-version>
-        <jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
-        <openapi-generator.version>5.4.0</openapi-generator.version>
+        <jackson-version>2.14.0</jackson-version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+        <openapi-generator.version>6.4.0</openapi-generator.version>
         <scribejava-core.version>8.3.1</scribejava-core.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+        <kotlin.version>1.6.0</kotlin.version>
+
+        <maven.build.helper.plugin.version>3.3.0</maven.build.helper.plugin.version>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>${maven.build.helper.plugin.version}</version>
                     <executions>
                         <execution>
                             <id>add-source</id>
@@ -47,7 +59,7 @@
                             </goals>
                             <configuration>
                                 <sources>
-                                    <source>${project.build.directory}/generated-sources/openapi/src/gen/java/main</source>
+                                    <source>${project.build.directory}/generated-sources/openapi/src/main/java</source>
                                 </sources>
                             </configuration>
                         </execution>
@@ -71,6 +83,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-v3.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.annotation</groupId>
                 <artifactId>javax.annotation-api</artifactId>
                 <version>${javax.annotation-api.version}</version>
@@ -93,12 +110,12 @@
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib-common</artifactId>
-                <version>1.4.32</version>
+                <version>${kotlin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib</artifactId>
-                <version>1.4.32</version>
+                <version>${kotlin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
