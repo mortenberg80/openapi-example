@@ -15,7 +15,7 @@
         <module>example-api-kotlin-spring</module>
         <module>example-api-spring-boot</module>
         <module>example-client-feign</module>
-        <!--        <module>example-client-okhttp</module>-->
+        <module>example-client-okhttp</module>
     </modules>
 
     <properties>
